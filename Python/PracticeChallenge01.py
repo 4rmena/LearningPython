@@ -59,7 +59,9 @@ gravity = -9.8
 
 height = initialH + (initialV * time) + (0.5 * gravity * (time ** 2))
 
-if height >= 100:
+if height == 0:
+	print("Landed")
+elif height >= 100:
 	print("High altitude")
 elif height > 5 and height < 100:
 	print("In flight")
@@ -67,8 +69,6 @@ elif height <= 5:
 	print("Near ground")
 elif height < 0:
 	print("Invalid, below ground level")
-elif height == 0:
-	print("Landed")
 
 # A5
 celsius = -41
