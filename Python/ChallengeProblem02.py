@@ -39,3 +39,10 @@ print()
 for z in Inner:
     z *= 5
     print(z, end=" ")
+print()
+
+# C3
+for row in Outer:
+    for col in Inner:
+        print(row * col, end=" ")
+    print()
