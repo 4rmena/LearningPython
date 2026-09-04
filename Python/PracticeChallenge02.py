@@ -22,11 +22,10 @@ while x < 20:
         print(x)
 
 # A3
-y = 0
-while y < 5:
-    y += 1
+def sum(*numbers):
+    total = 0
+    for num in numbers:
+        total += num
+    return total
 
-    def lists(y):
-        return y + y
-
-    
+print(sum(1, 2, 3, 4, 5, 6, 7, 8, 9,10))
