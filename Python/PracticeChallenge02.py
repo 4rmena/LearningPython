@@ -1,31 +1,61 @@
 # A1
-import random
+print("ANSWER 1")
 
-number = random.randrange(4, 10)
+def countdown(*start):
+    for start in range(10, -1, -1):
+        print(start)
+        if start == 0:
+            print("LAUNCH!!!")
 
-print(number)
+countdown()
 
-if number % 2 == 0:
-    print("Even!")
-else:
-    print("Odd!")
+print()
 
 # A2
-x = 0
+print("ANSWER 2")
 
-while x < 20:
-    x += 1
-    if x == 9:
-        continue
-
-    if x % 3 == 0:
-        print(x)
-
-# A3
-def sum(*numbers):
+def fuelAmount(*fuel):
     total = 0
-    for num in numbers:
-        total += num
+    for fuelConsumption in fuel:
+        total += fuelConsumption
     return total
 
-print(sum(1, 2, 3, 4, 5, 6, 7, 8, 9,10))
+
+total = fuelAmount(500, 300, 200)
+print(fuelAmount(total))
+
+print()
+
+# A3
+print("ANSWER 3")
+
+outer = [1, 2, 3, 4, 5]
+inner = [1, 2, 3, 4, 5]
+
+for row in outer:
+    print()
+    for col in inner:
+        print(row * col, end=" ")
+
+print()
+
+# A4
+print("ANSWER 4")
+
+def analyzeTemps(*temps):
+    avgTemp = 0
+    for avg in temps:
+        avgTemp += avg
+
+    maxTemp = temps[0]
+    for max in temps:
+        if max > maxTemp:
+            maxTemp = max
+    return avgTemp, maxTemp
+
+
+temps = [500, 750, 1200, 950, 800]
+avgTemp, maxTemp = analyzeTemps(*temps)
+print(f"Average: {avgTemp}, Max: {maxTemp}")
+
+print()
