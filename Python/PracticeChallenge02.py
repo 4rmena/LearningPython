@@ -73,4 +73,29 @@ def orbitSimulator(pos, vel, time):
     return pos
 
 final = orbitSimulator(1000, 50, 10)
-print(f"Final Position: {final}")
+print(f"Final Position: {final}")   
+
+# ROCKET FUEL BURN
+def fuelSim(fuel,burnRate, time):
+    print(f"Time: 0, Fuel: {fuel}")
+
+    for sec in range(1, time + 1):
+        fuel -= burnRate
+        print(f"Time: {sec}s, Fuel: {fuel}kg")
+
+    return fuel
+
+final = fuelSim(500, 20, 10)
+print(f"Final fuel: {final}")
+
+# ROCKET ALTITUDE
+def altitudeSim(altitude, climbRate, time):
+    print(f"Time: 0s, Altitude: {altitude}m")
+
+    for sec in range(1, time + 1):
+        altitude += climbRate
+        print(f"Time: {sec}s, Altitude: {altitude}m")
+    return altitude
+
+final = altitudeSim(200, 75, 8)
+print(f"Final Altitude: {final}m")
