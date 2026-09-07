@@ -43,14 +43,16 @@ print()
 print("ANSWER 4")
 
 def analyzeTemps(*temps):
-    avgTemp = 0
-    for avg in temps:
-        avgTemp += avg
-
     maxTemp = temps[0]
-    for max in temps:
-        if max > maxTemp:
-            maxTemp = max
+    total = 0
+
+    for temp in temps:
+        if temp > maxTemp:
+            maxTemp = temp
+
+        total += temp
+
+    avgTemp = total / len(temps)
     return avgTemp, maxTemp
 
 
@@ -59,3 +61,16 @@ avgTemp, maxTemp = analyzeTemps(*temps)
 print(f"Average: {avgTemp}, Max: {maxTemp}")
 
 print()
+
+# ORBITAL POSITION CALCULATOR
+def orbitSimulator(pos, vel, time):
+    print(f"Time: 0, Position: {pos}")
+
+    for sec in range(1, time + 1):
+        pos += vel
+        print(f"Time: {sec}, Position: {pos}")
+
+    return pos
+
+final = orbitSimulator(1000, 50, 10)
+print(f"Final Position: {final}")
