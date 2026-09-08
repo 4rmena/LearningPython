@@ -9,11 +9,3 @@ fruits.remove("banana")
 fruits.pop(-1)
 del fruits[0:1]
 print(fruits)
-
-def avgTemp(readings):
-    print(sum(readings))
-    return sum(readings) / len(readings)
-
-engineTemp = [500, 550, 600, 650, 700]
-avg = avgTemp(engineTemp)
-print(f"Average temperature: {avg}")
