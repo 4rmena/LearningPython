@@ -47,9 +47,7 @@ def dashboard(*data):
         if alt < lowestAlt:
             lowestAlt = alt
 
-
     return lowestAlt, highestAlt, len(excAlt)
-
 
 data = [0, 100, 250, 500, 900, 1500, 2100, 2800]
 data.append(3500)
@@ -73,27 +71,21 @@ def analyzeTemp(sensorA):
     max = sensorA[0]
     min = sensorA[0]
 
-
     for range in sensorA:
         if range > max:
             max = range
             print(max)
         if range < min:
             min = range
-
     range = max - min
     
     avgFloat = sum(sensorA) / len(sensorA)
     avgTemp = round(int(avgFloat), -1)
 
-
-
     return avgTemp, range
     
-
 sensorA = [500, 550, 600, 650, 700]
 sensorB = [520, 570, 620, 670]
-
 print(f"Sensor A: {sensorA}")
 print(f"Sensor B: {sensorB}")
 
@@ -111,6 +103,52 @@ print()
 
 # ORBITAL POSITIONS
 
+def posCoords():
+    x = posDataB[0] - posDataA[0]
+    y = posDataB[1] - posDataA[1]
+    z = posDataB[2] - posDataA[2]
+
+    return x, y, z
+    
+
+posDataA = [1000, 2000, 3000]
+posDataB = [1050, 2100, 3100]
+
+X, Y, Z = posCoords()
+
+print(f"Distance in X: {X}")
+print(f"Distance in X: {Y}")
+print(f"Distance in X: {Z}")
+
+
 print()
 
 # ROCKET STAGE DATA
+
+def stageData():
+    longestBurn = burnTimes[0]
+    total = 0
+
+    for long in burnTimes:
+        if long > longestBurn:
+            longestBurn = long
+
+        total += longestBurn
+
+    return longestBurn, total
+
+stage = (1, 2, 3)
+mass = (150, 120, 100)
+burnTimes = (60, 90, 120)
+
+data = [stage, mass, burnTimes]
+x, y, z = map(list, zip(*data))
+
+longestBurn, total = stageData()
+
+print(f"Stage 1: {x}")
+print(f"Stage 2: {y}")
+print(f"Stage 3: {z}")
+print(f"Total mass: {sum(mass)}")
+print(f"Total burn time: {total}")
+print(f"Longest burn: {longestBurn}")
