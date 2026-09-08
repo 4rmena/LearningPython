@@ -66,23 +66,21 @@ print(f"Last 3 readings: {data[-3:]}")
 print()
 
 # SENSOR DATA PROCESSING 
-
 def analyzeTemp(sensorA):
     max = sensorA[0]
     min = sensorA[0]
 
-    for range in sensorA:
-        if range > max:
-            max = range
-            print(max)
-        if range < min:
-            min = range
-    range = max - min
+    for temp in sensorA:
+        if temp > max:
+            max = temp
+        if temp < min:
+            min = temp
+    temp = max - min
     
     avgFloat = sum(sensorA) / len(sensorA)
-    avgTemp = round(int(avgFloat), -1)
+    avgTemp = round(avgFloat, 0)
 
-    return avgTemp, range
+    return avgTemp, temp
     
 sensorA = [500, 550, 600, 650, 700]
 sensorB = [520, 570, 620, 670]
@@ -95,9 +93,15 @@ print(f"Sensors Combined: {sensorA}")
 sensorA.sort()
 print(f"Sensors sorted: {sensorA}")
 
-avgTemp, range = analyzeTemp(sensorA)
+avgTemp, temp = analyzeTemp(sensorA)
 print(f"Average Temperature: {avgTemp}")
-print(f"Range (Max - Min): {range}")
+print(f"Range (Max - Min): {temp}")
+
+"""
+Errors:
+Variable naming (shadowing built-ins)
+Rounding logic could be clearer
+"""
 
 print()
 
@@ -117,8 +121,8 @@ posDataB = [1050, 2100, 3100]
 X, Y, Z = posCoords()
 
 print(f"Distance in X: {X}")
-print(f"Distance in X: {Y}")
-print(f"Distance in X: {Z}")
+print(f"Distance in Y: {Y}")
+print(f"Distance in Z: {Z}")
 
 
 print()
@@ -133,7 +137,8 @@ def stageData():
         if long > longestBurn:
             longestBurn = long
 
-        total += longestBurn
+        total += long
+        # BUG: Changed from longestBurn to long
 
     return longestBurn, total
 
