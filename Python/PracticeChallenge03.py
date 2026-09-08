@@ -37,17 +37,20 @@ print()
 def dashboard(*data):
     highestAlt = data[0]
     lowestAlt = data[0]
-    excAlt = []
+#    excAlt = []
 
     for alt in data:
         if alt > highestAlt:
             highestAlt = alt
-        if alt > 1000:
-            excAlt.append(alt)
+#        if alt > 1000:
+#            excAlt.append(alt)
         if alt < lowestAlt:
             lowestAlt = alt
 
-    return lowestAlt, highestAlt, len(excAlt)
+    highAlt = [x for x in data if x > 1000]
+
+#    return lowestAlt, highestAlt, len(excAlt)
+    return lowestAlt, highestAlt, highAlt
 
 data = [0, 100, 250, 500, 900, 1500, 2100, 2800]
 data.append(3500)
@@ -56,11 +59,14 @@ print(f"Original readings: {data}")
 data.pop(0)
 print(f"Updated readings: {data}")
 
-lowestAlt, highestAlt, excAlt = dashboard(*data)
+# lowestAlt, highestAlt, excAlt = dashboard(*data)
+lowestAlt, highestAlt, highAlt = dashboard(*data)
 
 print(f"Lowest Altitude: {lowestAlt}")
 print(f"Highest Altitude: {highestAlt}")
-print(f"Time altitude exceeded 1000m: {excAlt}")
+# print(f"Time altitude exceeded 1000m: {excAlt}")
+# Alternative for last 3 readings
+print(f"Times altitude exceeded 1000m: {len(highAlt)}")
 print(f"Last 3 readings: {data[-3:]}")
 
 print()
