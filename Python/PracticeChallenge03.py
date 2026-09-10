@@ -72,9 +72,9 @@ print(f"Last 3 readings: {data[-3:]}")
 print()
 
 # SENSOR DATA PROCESSING 
-def analyzeTemp(sensorA):
-    max = sensorA[0]
-    min = sensorA[0]
+def analyzeTemp(sensorData):
+    max = sensorData[0]
+    min = sensorData[0]
 
     for temp in sensorA:
         if temp > max:
