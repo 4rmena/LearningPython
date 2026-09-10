@@ -1,7 +1,7 @@
 # A1
 print("ANSWER 1")
 
-def countdown(*start):
+def countdown():
     for start in range(10, -1, -1):
         print(start)
         if start == 0:

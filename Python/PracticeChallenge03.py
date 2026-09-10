@@ -76,14 +76,14 @@ def analyzeTemp(sensorData):
     max = sensorData[0]
     min = sensorData[0]
 
-    for temp in sensorA:
+    for temp in sensorData:
         if temp > max:
             max = temp
         if temp < min:
             min = temp
     temp = max - min
     
-    avgFloat = sum(sensorA) / len(sensorA)
+    avgFloat = sum(sensorData) / len(sensorData)
     avgTemp = round(avgFloat, 0)
 
     return avgTemp, temp
