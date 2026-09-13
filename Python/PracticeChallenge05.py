@@ -71,18 +71,22 @@ print()
 
 # MISSION CONTROL DASHBOARD (CAPSTONE)
 def alertSummary(log):
-
     uniqueCodeSets = set(log)
 
-    freq = {}
+    mostFreq = {}
+    count = 0
 
-    for count in log:
-        freq[count] = freq.get(count, 0) + 1
-        
-    return uniqueCodeSets, freq
+    for freq in log:
+        mostFreq[freq] = mostFreq.get(freq, 0) + 1
+
+    totalAlerts = len(log)
+
+    return uniqueCodeSets, max(mostFreq, key=mostFreq.get), totalAlerts
 
 alert_log = [204, 204, 501, 302, 501, 501, 204, 610]
 
-setLogs = alertSummary(alert_log)
+uniqueCodeSets, mostFreq, totalAlerts = alertSummary(alert_log)
 
-print(setLogs)
+print(f"Unique Code sets: {uniqueCodeSets}")
+print(f"Most frequent integer: {mostFreq}")
+print(f"Total numbers of code: {totalAlerts}")
