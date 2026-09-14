@@ -20,13 +20,20 @@ readings = [101, 102, 102, 103, 104, 104, 104, 105]
 
 def findDuplicates(data):
     setReadings = set(data)
-    common = set.intersection(setReadings)
-    total = len(common)
-    return common, total
+    tally = {}
+    Count = 1
+    freq = set()
 
-common, total = findDuplicates(readings)
-print(f"Values that appeared more than once: {total}")
-print(f"Values: {common}")
+    for value in data:
+        tally[value] = tally.get(value, 0) + 1
+        if tally[value] > Count:
+            freq.add(value)
+
+    return freq, setReadings
+
+freq, setReadings = findDuplicates(readings)
+print(f"Values that appeared more than once: {freq}")
+print(f"Values: {setReadings}")
 
 print()
 
@@ -54,6 +61,7 @@ def roster_mismatch(setA, setB):
     rosterA = set(setA)
     rosterB = set(setB)
     finalRoster = set.union(rosterA, rosterB)
+    mismatch = None
 
     if rosterA != rosterB:
         mismatch = set.symmetric_difference(rosterA, rosterB)

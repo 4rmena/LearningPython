@@ -34,7 +34,7 @@ print()
 
 # MISSION CONTROL DASHBOARD
 
-def dashboard(*data):
+def dashboard(data):
     highestAlt = data[0]
     lowestAlt = data[0]
 #    excAlt = []
@@ -60,7 +60,7 @@ data.pop(0)
 print(f"Updated readings: {data}")
 
 # lowestAlt, highestAlt, excAlt = dashboard(*data)
-lowestAlt, highestAlt, highAlt = dashboard(*data)
+lowestAlt, highestAlt, highAlt = dashboard(data)
 
 print(f"Lowest Altitude: {lowestAlt}")
 print(f"Highest Altitude: {highestAlt}")
