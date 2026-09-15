@@ -90,7 +90,6 @@ def alertSummary(log):
     totalAlerts = len(log)
 
     return uniqueCodeSets, max(mostFreq, key=mostFreq.get), totalAlerts
-
 alert_log = [204, 204, 501, 302, 501, 501, 204, 610]
 
 uniqueCodeSets, mostFreq, totalAlerts = alertSummary(alert_log)
