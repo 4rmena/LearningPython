@@ -97,3 +97,23 @@ uniqueCodeSets, mostFreq, totalAlerts = alertSummary(alert_log)
 print(f"Unique Code sets: {uniqueCodeSets}")
 print(f"Most frequent integer: {mostFreq}")
 print(f"Total numbers of code: {totalAlerts}")
+
+stages = [(1, 150, 60), (2, 120, 90), (3, 100, 120)]
+
+total_mass = 0
+total_time = 0
+longest_stage = None
+longest_time = 0
+
+for stage_num, mass, time in stages:
+    print(f"Stage {stage_num}: {mass} kg, {time} seconds")
+    total_mass += mass
+    total_time += time
+    
+    if time > longest_time:
+        longest_time = time
+        longest_stage = stage_num
+
+print(f"Total mass: {total_mass} kg")
+print(f"Total burn time: {total_time} seconds")
+print(f"Longest burn: Stage {longest_stage} ({longest_time} seconds)")
