@@ -1,7 +1,11 @@
 def missionReport(*stations):
-    totalFaults = list.copy(stations[0])
-    totalFaults.extend(stations[1],)
-    totalFaults.extend(stations[2])
+    totalFaults = []
+    for station in stations:
+        totalFaults.extend(station)
+
+#    totalFaults = list.copy(stations[0])
+#    totalFaults.extend(stations[1])
+#    totalFaults.extend(stations[2])
 
     uniqueCodes = set().union(*stations)
 
@@ -10,44 +14,54 @@ def missionReport(*stations):
     mostFreqCode = {}
     bestCount = 0
 
-    for count in totalFaults:
-        mostFreqCode[count] = mostFreqCode.get(count, 0) + 1
-    for code in totalFaults:
-        currentCount = totalFaults.count(code)
-        if currentCount > bestCount:
-            bestCount = currentCount
-            mostFreqCode = code
+    stationSummaries = []
 
-    index = 1
-    
-    while index <= len(stations):
+    mostFreqCode = {}
 
-        for faultCount in stations:
-            faultCount = len(stations)
+    for value in totalFaults:
+        mostFreqCode[value] = mostFreqCode.get(value, 0) + 1
 
-        print(index)
+    mostFreqCode = max(mostFreqCode, key=mostFreqCode.get)
 
-        index += 1
+#    for count in totalFaults:
+#        mostFreqCode[count] = mostFreqCode.get(count, 0) + 1
+#    for code in totalFaults:
+#        currentCount = totalFaults.count(code)
+#        if currentCount > bestCount:
+#            bestCount = currentCount
+#            mostFreqCode = code
 
-    print(faultCount)
+    for index, station in enumerate(stations):
+        worstCode = 0
+        worstCodeCount = {}
+        bestWorstCount = 0
+
+        stationIndex = index
+
+        faultCount = (len(station))
+
+        for count in station:
+            worstCodeCount[count] = worstCodeCount.get(count, 0) + 1
+        for code in station:
+            currentWorst = worstCodeCount[code]
+            if currentWorst > bestWorstCount:
+                bestWorstCount = currentWorst
+                worstCode = code
+            stationSum = (stationIndex, faultCount, worstCode)
+        stationSummaries.append(stationSum)
 
 
+    return len(totalFaults), uniqueCodes, commonCodes, mostFreqCode, stationSummaries
 
-    return len(totalFaults), uniqueCodes, commonCodes, mostFreqCode
-
-#    stationSum = [tuple(stations[0]), tuple(stations[1]), tuple(stations[2])]
-#    for stationIndex, faultCount, worstCode in stations:
-#        pass
-#        stationSum = stationIndex, faultCount, worstCode
 
 stationA = [204, 204, 501, 302, 501]
 stationB = [204, 610, 501, 204]
 stationC = [302, 204, 501, 204, 610, 610]
 
-totalFaults, uniqueCodes, commonCodes, mostFreqCode = missionReport( stationA, stationB, stationC)
+totalFaults, uniqueCodes, commonCodes, mostFreqCode, stationSummaries = missionReport(stationA, stationB, stationC)
 
-print(totalFaults)
-print(uniqueCodes)
-print(commonCodes)
-print(mostFreqCode)
-# print(stationSum)
+print(f"Total number of faults across all stations: {totalFaults}")
+print(f"Set of every distict code seen across all stations: {uniqueCodes}")
+print(f"Set of codes that appeared in every single stations: {commonCodes}")
+print(f"Most frequent code that is seen in every station: {mostFreqCode}")
+print(f"Station summary report:{stationSummaries}")
